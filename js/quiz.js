@@ -1,5 +1,8 @@
 var username = "no username";
 var email;
+function printLog(selector, message){
+	document.querySelector(selector).innerHTML += message + "<br>";
+}
 
 function updateUsername(){
 	printLog("#prePartTwo", "updateUsername called():");

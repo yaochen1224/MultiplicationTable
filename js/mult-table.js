@@ -2,11 +2,10 @@ function multtableMain() {
     w = 610
     h = 380
     s = "";
-    s += '<div style="position:relative; width:' + w + 'px; height:' + h + 'px">';
+    s += '<div id="table">';
     s += '<canvas id="canvasId" width="' + w + '" height="' + h + '" style="z-index:1;"></canvas>';
-    s += '<div id="mult" style="font: 27pt arial; font-weight: bold; color: #6600cc; position:absolute; top:330px; left:0px; width:610px; text-align:center;">3 x 3 = 9</div>';
-    s += '<div id="copyrt" style="font: 7pt arial; font-weight: bold; color: #6600cc; position:absolute; bottom:3px; left:1px; text-align:center;">&copy; 2015 MathsIsFun.com  v 0.81</div>';
-    s += '<div id="dbg" style="font: 9pt sans-serif;"></div>';
+    s += '<div id="mult"> 3 x 3 = 9 </div>';
+    s += '<div id="dbg" style="font: 19pt sans-serif;"></div>';
     s += '</div>';
     document.write(s);
     el = document.getElementById('canvasId');
@@ -92,28 +91,28 @@ Tile.prototype.refresh = function() {
     this.g.lineTo(lt, tp)
     if (this.r == 0 || this.c == 0) {
         if (this.r == 0 && this.c == 0) {
-            this.g.fillStyle = "#ff0000"
+            this.g.fillStyle = "#eee"
             this.g.textAlign = "center"
             this.g.font = "bold 33px qarmic"
-            this.g.fillText("×", 25, 20)
+            this.g.fillText(" ", 25, 20)
         } else {
-            lvls = ["#ffffff", "#ffffff", "#aaccff", "#aaccff"]
+            lvls = ["#ffffff", "#ffffff", "#78909C", "#aaccff"]
             this.g.fillStyle = lvls[this.lvl]
             this.g.fill()
             var s = ""
             if (this.r > 0) s = this.r
             if (this.c > 0) s = this.c
-            this.g.fillStyle = "#0000ff"
+            this.g.fillStyle = "#183D4E"
             this.g.textAlign = "center"
-            this.g.font = "bold 17px Verdana"
+            this.g.font = "bold 15px Verdana"
             this.g.fillText(s, lt + wd / 2, tp + 20)
         }
     } else {
         this.g.stroke();
-        lvls = ["#eeeeff", "#eeeeff", "#ffffee", "#aaccff"]
+        lvls = ["#eeeeff", "#eeeeff", "#CFD8DC", "#78909C"]
         this.g.fillStyle = lvls[this.lvl]
         this.g.fill()
-        this.g.fillStyle = "#000000"
+        this.g.fillStyle = "#183D4E"
         this.g.textAlign = "center"
         this.g.font = "15px Verdana"
         this.g.fillText(this.c * this.r, lt + wd / 2, tp + 18)

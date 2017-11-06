@@ -1,29 +1,38 @@
-var username = "no username";
-var email;
-function printLog(selector, message){
-	document.querySelector(selector).innerHTML += message + "<br>";
-}
+// toggle active class to side navigation bar
+$(function() {
+$("a").click(function() {
+  // remove classes from all
+  $("a").removeClass("active");
+  // add class to the one we clicked
+  $(this).addClass("active");
+  // stop the page from jumping to the top
 
-function updateUsername(){
-	printLog("#prePartTwo", "updateUsername called():");
-	username = document.querySelector('#username').value;
-	printLog("#prePartTwo", `  username assigned to ${username}`);
-}
-function updateEmail(event) {
-	printLog("#prePartTwo", "updateEmail called():");
-	email = event.target.value;
-	printLog("#prePartTwo", `  email assigned to ${email}`);
-}
-function printInfo() {
-	document.querySelector('#userInfo').innerHTML = `<strong>${username} - <em>${email}</em></strong>`;
-	printLog("#prePartTwo", `printInfo called(): ${username} - ${email}`);
-}
-function resetInfo() {
-	var usernameElement = document.querySelector('#username');
-	usernameElement.value = "";
-	document.querySelector('#email').value = "";
-	document.querySelector('#userInfo').innerText = "unknown person";
-	document.querySelector('#prePartTwo').innerHTML = "History:<br><br>";
+});
+});
 
-	usernameElement.focus();
-}
+
+// add smooth scroll
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});

@@ -1,45 +1,44 @@
 function multtableMain() {
-    w = 610
-    h = 380
+    w = 600
+    h = 400
     s = "";
     s += '<div id="table">';
     s += '<canvas id="canvasId" width="' + w + '" height="' + h + '" style="z-index:1;"></canvas>';
-    s += '<div id="mult"> 3 x 3 = 9 </div>';
-    s += '<div id="dbg" style="font: 19pt sans-serif;"></div>';
+    s += '<div id="mult"> 1 x 1 = 1 </div>';
     s += '</div>';
     document.write(s);
-    el = document.getElementById('canvasId');
+    canvas = document.getElementById('canvasId');
     ratio = 4
-    el.width = w * ratio;
-    el.height = h * ratio;
-    el.style.width = w + "px";
-    el.style.height = h + "px";
-    g = el.getContext("2d");
+    canvas.width = w * ratio;
+    canvas.height = h * ratio;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    g = canvas.getContext("2d");
     g.setTransform(ratio, 0, 0, ratio, 0, 0)
     tiles = []
-    for (var c = 0; c <= 12; c++) {
+    for (var c = 0; c <= 10; c++) {
         tiles[c] = []
-        for (var r = 0; r <= 12; r++) {
+        for (var r = 0; r <= 10; r++) {
             var t = new Tile(g, r, c)
             tiles[c][r] = t
         }
     }
-    el.addEventListener('touchmove', ontouchmove, false);
-    el.addEventListener('mousemove', onmousemove, false);
+    canvas.addEventListener('touchmove', ontouchmove, false);
+    canvas.addEventListener('mousemove', onmousemove, false);
     update();
 }
 
 function onmousemove(e) {
-    var rect = el.getBoundingClientRect();
+    var rect = canvas.getBoundingClientRect();
     var x0 = (e.clientX - rect.left);
     var y0 = (e.clientY - rect.top);
-    var c0 = Math.floor(x0 / 45);
-    var r0 = Math.floor(y0 / 25);
-    if (c0 < 1 || c0 > 12) return
-    if (r0 < 1 || r0 > 12) return
+    var c0 = Math.floor(x0 / 53);
+    var r0 = Math.floor(y0 / 28);
+    if (c0 < 1 || c0 > 10) return
+    if (r0 < 1 || r0 > 10) return
     document.getElementById("mult").innerHTML = r0 + " &times; " + c0 + " = " + r0 * c0
-    for (var c = 0; c <= 12; c++) {
-        for (var r = 0; r <= 12; r++) {
+    for (var c = 0; c <= 10; c++) {
+        for (var r = 0; r <= 10; r++) {
             lvl = 1
             var t = tiles[r][c]
             if (r == r0 && c < c0) lvl = 2
@@ -76,8 +75,8 @@ Tile.prototype.hilite = function(ilvl) {
     }
 }
 Tile.prototype.refresh = function() {
-    wd = 45
-    ht = 25
+    wd = 53
+    ht = 28
     lt = this.r * wd + 0.5
     tp = this.c * ht + 0.5
     g.clearRect(lt, tp, wd, ht);
@@ -94,9 +93,9 @@ Tile.prototype.refresh = function() {
             this.g.fillStyle = "#eee"
             this.g.textAlign = "center"
             this.g.font = "bold 33px qarmic"
-            this.g.fillText(" ", 25, 20)
+            this.g.fillText(" ", 30, 20)
         } else {
-            lvls = ["#ffffff", "#ffffff", "#78909C", "#aaccff"]
+            lvls = ["#ffffff", "#ffffff", "#F48FB1", "#aaccff"]
             this.g.fillStyle = lvls[this.lvl]
             this.g.fill()
             var s = ""
@@ -109,113 +108,12 @@ Tile.prototype.refresh = function() {
         }
     } else {
         this.g.stroke();
-        lvls = ["#eeeeff", "#eeeeff", "#CFD8DC", "#78909C"]
+        lvls = ["#f7f7f7", "#f7f7f7", "#FCE4EC", "#F48FB1"]
         this.g.fillStyle = lvls[this.lvl]
         this.g.fill()
         this.g.fillStyle = "#183D4E"
         this.g.textAlign = "center"
-        this.g.font = "15px Verdana"
+        this.g.font = "14px Verdana"
         this.g.fillText(this.c * this.r, lt + wd / 2, tp + 18)
     }
-};
-
-function hiGraphics() {
-    lineWidth = 5;
-    lineJoin = "round";
-    strokeStyle = "#333";
-}
-hiGraphics.prototype.clear = function(el) {
-    g = el.getContext("2d");
-    g.clearRect(0, 0, el.width, el.height);
-    return true;
-};
-hiGraphics.prototype.lineStyle = function(width, clr, opacity) {
-    lineWidth = width;
-    lineJoin = "round";
-    strokeStyle = clr;
-};
-hiGraphics.prototype.stt = function() {
-    g.beginPath();
-    g.lineWidth = lineWidth;
-    g.lineJoin = lineJoin;
-    g.strokeStyle = strokeStyle;
-};
-hiGraphics.prototype.drawCircle = function(g, circleX, circleY, circleRadius) {
-    this.stt();
-    g.fillStyle = "#FF0000";
-    g.arc(circleX, circleY, circleRadius, 0, 2 * Math.PI);
-    g.stroke();
-    return true;
-};
-hiGraphics.prototype.drawCompass = function(g, circleX, circleY, tickRadius) {
-    var tickLen = 15;
-    for (var i = 0; i < 360; i += 15) {
-        var angle = i * Math.PI / 180.;
-        if (i % 90) {
-            this.lineStyle(1, "#888888", 1);
-        } else {
-            this.lineStyle(2, "#444444", 1);
-        }
-        this.stt();
-        var cX = circleX + Math.cos(angle) * tickRadius;
-        var cY = circleY - Math.sin(angle) * tickRadius;
-        g.moveTo(cX, cY);
-        cX = circleX + Math.cos(angle) * (tickRadius + tickLen);
-        cY = circleY - Math.sin(angle) * (tickRadius + tickLen);
-        g.lineTo(cX, cY);
-        g.stroke();
-        cX = circleX + Math.cos(angle) * (tickRadius + tickLen + 14) - 12;
-        cY = circleY - Math.sin(angle) * (tickRadius + tickLen + 14) + 5;
-        g.font = "12px Arial";
-        g.fillText(i + "°", cX, cY, 100);
-    }
-};
-hiGraphics.prototype.drawArc = function(g, midX, midY, radius, fromAngle, toAngle) {
-    this.stt();
-    g.arc(midX, midY, radius, fromAngle, toAngle);
-    g.stroke();
-};
-hiGraphics.prototype.drawBox = function(g, midX, midY, radius, angle) {
-    this.stt();
-    var pts = [
-        [0, 0],
-        [Math.cos(angle), Math.sin(angle)],
-        [Math.cos(angle) + Math.cos(angle + Math.PI / 2), Math.sin(angle) + Math.sin(angle + Math.PI / 2)],
-        [Math.cos(angle + Math.PI / 2), Math.sin(angle + Math.PI / 2)],
-        [0, 0]
-    ];
-    for (var i = 0; i < pts.length; i++) {
-        if (i == 0) {
-            g.moveTo(midX + radius * pts[i][0], midY + radius * pts[i][1]);
-        } else {
-            g.lineTo(midX + radius * pts[i][0], midY + radius * pts[i][1]);
-        }
-    }
-    g.stroke();
-};
-var HiGraphics = new hiGraphics();
-
-function TextBox(ig, ifont, ifontSize, iwd, ilines, itxt, ix, iy, iinputQ) {
-    this.g = ig;
-    this.font = ifont;
-    this.fontSize = ifontSize;
-    this.wd = iwd;
-    this.lines = ilines;
-    this.txt = itxt;
-    this.posx = ix;
-    this.posy = iy;
-    this.clr = "#000000";
-    this.refresh();
-}
-TextBox.prototype.refresh = function() {
-    this.g.font = this.fontSize + "px " + this.font;
-    this.g.fillStyle = this.clr;
-    this.g.fillText(this.txt, this.posx, this.posy, this.wd);
-};
-TextBox.prototype.setText = function(itxt) {
-    this.txt = itxt;
-    this.refresh();
-};
-TextBox.prototype.setClr = function(iclr) {
-    this.clr = iclr;
 };

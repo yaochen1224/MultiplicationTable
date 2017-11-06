@@ -1,83 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Yao Chen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiplicationTable</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style/mystyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/mult-table.js" type="text/javascript"></script>
-    <script src="js/quiz.js" type="text/javascript"></script>
-  </head>
-  <body>
-    <header class = "text-center">
-      <h1>Tinker With a <b>Multiplication Table</b> Right Here </h1>
-    </header>
-
-    <div class="container-fluid text-center">
-      <div class="row content">
-        <nav class="col-sm-2 sidenav">
-          <a href="#" class="active">Multiplication Table</a>
-          <a href="#">Practice</a>
-          <a href="#">Instructions</a>
-        </nav>
-
-        <main class="col-sm-10 text-left">
-          <div id="mult-table">
-            <h2>Multiplication Table</h2>
-            <script type="text/javascript">multtableMain();</script>
-          </div>
-
-          <div id="mult-practice">
-            <h2>Multiplication Practice</h2>
-            <p>Try the following mixed times tables quiz:</p>
-            <div class="panel panel-default">
-    					<div class="panel-heading">
-    						<h3 class="panel-title">Hello, <span id="userInfo">unknown person</span>.</h3>
-    					</div>
-    					<div class="panel-body">
-    						<form class="form-inline">
-    							<div class="form-group">
-    								<label class="sr-only" for="username">First</label> <input class="form-control" id="username" onchange="updateUsername()" placeholder="Username" type="text">
-    							</div>
-    							<div class="form-group">
-    								<label class="sr-only" for="email">Email</label> <input class="form-control" id="email" onchange="updateEmail(event)" placeholder="Email" type="email">
-    							</div><button class="btn btn-default" onclick="printInfo()" type="button">Print Info</button> <button class="btn btn-danger" onclick="resetInfo()" type="button">Reset</button>
-    						</form>
-    						<pre id="prePartTwo">History:<br><br></pre>
-    					</div>
-    				</div>
-            <div class="panel panel-primary">
-    					<div class="panel-heading">
-    						<div class="panel-title">
-    							RESULTS:
-    						</div>
-    					</div>
-    					<div class="panel-body">
-    						<p id="realTimeStory">No Content</p><span class="label label-warning hidden">EDITING</span>
-    						<div class="tags">
-    							<!-- See printTagsHTML -->
-    						</div>
-    					</div>
-    				</div>
-          </div>
-
-          <article>
-            <h2>How to learn</h2>
-            <p>Your life will be a lot easier when you can simply remember the multiplication tables.
-              So ... train your memory!
-              First, use the table above to start putting the answers into your memory.Then use the Math Trainer - Multiplication to train your memory, it is specially designed to help you memorize the tables.
-              Use it a few times a day for about 5 minutes each, and you will learn your tables.
-              Try it now, and then come back and read some more ...</p>
-          </article>
-        </main>
-      </div>
-    </div>
-    <footer class="container-fluid text-center">
-      <p>Footer Text</p>
-    </footer>
-  </body>
+<head>
+	<meta charset="UTF-8">
+	<meta content="Yao Chen" name="author">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>MultiplicationTable</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="style/mystyle.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script>
+	<script src="js/mult-table.js" type="text/javascript">
+	</script>
+	<script src="js/quiz.js" type="text/javascript">
+	</script>
+</head>
+<body>
+	<header class="text-center">
+		<h1>Tinker With a <b>Multiplication Table</b> Right Here</h1>
+	</header>
+	<nav class="sidenav">
+		<a class="active" href="#">Multiplication Table</a> <a href="#">Practice</a> <a href="#">Instructions</a>
+	</nav>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-3"></div>
+			<main class="col-sm-6 text-left">
+				<div id="mult-table">
+					<h2>Multiplication Table</h2>
+					<script type="text/javascript">
+					multtableMain();
+					</script>
+				</div>
+				<div id="mult-practice">
+					<h2>Multiplication Practice</h2>
+					<p>Try the following mixed times tables quiz:</p>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Hello, <span id="userInfo">unknown person</span>.</h3>
+						</div>
+						<div class="panel-body">
+							<form class="form-inline">
+								<div class="form-group">
+									<label class="sr-only" for="username">First</label> <input class="form-control" id="username" onchange="updateUsername()" placeholder="Username" type="text">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="email">Email</label> <input class="form-control" id="email" onchange="updateEmail(event)" placeholder="Email" type="email">
+								</div>
+                                <button class="btn btn-default" onclick="printInfo()" type="button">Print Info</button>
+                                <button class="btn btn-danger" onclick="resetInfo()" type="button">Reset</button>
+							</form>
+							<pre id="prePartTwo">History:<br><br></pre>
+						</div>
+					</div>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<div class="panel-title">
+								RESULTS:
+							</div>
+						</div>
+						<div class="panel-body">
+							<p id="realTimeStory">No Content</p><span class="label label-warning hidden">EDITING</span>
+							<div class="tags">
+								<!-- See printTagsHTML -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<article>
+					<h2>How to learn</h2>
+					<p>Your life will be a lot easier when you can simply remember the multiplication tables. So ... train your memory! First, use the table above to start putting the answers into your memory.Then use the Math Trainer - Multiplication to train your memory, it is specially designed to help you memorize the tables. Use it a few times a day for about 5 minutes each, and you will learn your tables. Try it now, and then come back and read some more ...</p>
+				</article>
+			</main>
+		</div>
+	</div>
+	<footer class="container-fluid text-center">
+		<p>Website created by Yao Chen</p>
+	</footer>
+</body>
 </html>

@@ -11,6 +11,7 @@ $("a").click(function() {
 });
 
 
+
 // add smooth scroll
 $(document).ready(function(){
   // Add smooth scrolling to all links

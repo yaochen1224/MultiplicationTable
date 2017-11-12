@@ -1,4 +1,5 @@
 body {
+    position: relative;
     font-family: "Helvetica", "Arial", sans-serif;
 }
 
@@ -27,12 +28,9 @@ h2 {
   font-size: 25px;
 }
 
-.row.content {
-	height: 450px
-}
 .sidenav {
     position: fixed;
-	   height: 100%
+	  height: 100%
     color: #eee;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -48,11 +46,11 @@ h2 {
 	text-decoration: none;
 	/* Remove underline from links */
 }
-.sidenav a:hover {
+.sidenav li a:hover {
 	background-color: #ccc;
 	/* Dark grey background on mouse-over */
 }
-.sidenav a.active {
+.sidenav li.active a{
 	background-color: #E91E63;
 	/* Add a color to the "active/current" link */
 	color: white;
@@ -61,6 +59,7 @@ h2 {
 .sidenav ul {
   margin: 0;
 }
+
 
 .panel-body > pre {
 	margin-top: 15px;

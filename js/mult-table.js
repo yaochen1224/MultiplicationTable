@@ -117,3 +117,8 @@ Tile.prototype.refresh = function() {
         this.g.fillText(this.c * this.r, lt + wd / 2, tp + 18)
     }
 };
+
+function randomNum() {
+  var random = Math.floor((Math.random() * 10) + 1);
+  return random;
+}

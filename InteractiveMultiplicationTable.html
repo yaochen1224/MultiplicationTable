@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta content="Yao Chen" name="author">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>MultiplicationTable</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <title>Multiplication Table</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="style/mystyle.css" rel="stylesheet" type="text/css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-	</script>
-	<script src="js/mult-table.js" type="text/javascript">
-	</script>
-	<script src="js/quiz.js" type="text/javascript">
-	</script>
+	<script src="js/mult-table.js" type="text/javascript"></script>
+	<script src="js/quiz.js" type="text/javascript"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target="#myNav" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target="#myNav" data-offset="20">
 	<header class="text-center">
 		<h1>Tinker With a <b>Multiplication Table</b> Right Here</h1>
 	</header>
-	<nav class="nav sidenav" id="myNav">
-		<ul class="list-unstyled components">
-			<li><a href="#myPage" class="active">Multiplication Table</a></li>
+
+	<nav id="myNav">
+		<ul class="list-unstyled nav sidenav">
+			<li><a href="#myPage">Multiplication Table</a></li>
 	 		<li><a href="#mult-practice">Practice</a></li>
 	 		<li><a href="#instruction">Instructions</a></li>
 		</ul>
 	</nav>
+
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<main class="col-sm-6 text-left col-sm-offset-3">
@@ -57,11 +54,12 @@
 								<label class="sr-only" for="email">Email</label> <input class="form-control" id="email" onchange="updateEmail(event)" placeholder="Email" type="email">
 							</div>
 							<button class="btn btn-default" onclick="printInfo()" type="button">Confirm</button>
-
 						</form>
-						<pre id="prePartTwo">Quiz:<br><br>7 x 9 =  <input class="answerInput" id="answer" onchange="updateResult(event)" placeholder="Your Answer" type="number">
-						<br>2 x 7 =  <input class="answerInput" id="answer" onchange="updateResult(event)" placeholder="Your Answer" type="number">
-					<br>5 x 6 =  <input class="answerInput" id="answer" onchange="updateResult(event)" placeholder="Your Answer" type="number"></pre>
+						<pre id="prePartTwo">Quiz:<br>
+							<br>7 x 9 =  <input class="answerInput" onchange="updateResult(event)" placeholder="Your Answer" type="number">
+							<br>2 x 7 =  <input class="answerInput" onchange="updateResult(event)" placeholder="Your Answer" type="number">
+							<br>5 x 6 =  <input class="answerInput" onchange="updateResult(event)" placeholder="Your Answer" type="number">
+						</pre>
 						<button class="btn btn-danger" onclick="resetInfo()" type="button">Submit</button>
 					</div>
 				</div>
@@ -80,6 +78,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
 		<article id="instruction" class="col-sm-6 text-left col-sm-offset-3">
 			<h2>How to learn</h2>

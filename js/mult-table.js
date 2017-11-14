@@ -122,3 +122,42 @@ function randomNum() {
   var random = Math.floor((Math.random() * 10) + 1);
   return random;
 }
+
+var quizArray = [];
+function quizGenerator() {
+  var quiz = '';
+  for (i = 0; i < 9; i++) {
+    var x = randomNum();
+    var y = randomNum();
+    var answer = x*y;
+    quizArray.push([x, y,answer]);
+    quiz += '<div class="quizStem"><br>' + x + ' &times; '+ y + ' =  <input class="answerInput" id="inputField' +i +'" placeholder="Your Answer" type="number"><span class="glyphicon glyphicon-ok" id="correct'+i+'"></span></div>'
+  }
+  document.getElementById('quiz').innerHTML = quiz;
+}
+
+
+
+function inputCheck() {
+  var tried = 0;
+	var yesCount = 0;
+  for(var i=0; i<9; i++){
+    var inputValue = document.getElementById('inputField' + i).value;
+    if(inputValue !== ""){
+      tried++;
+    }
+    if(inputValue == quizArray[i][2]){
+      yesCount++;
+      document.getElementById('correct' + i).style.opacity = 1;
+    }
+  }
+  var result = '';
+  if(tried > 0){
+    var grades = Math.round(yesCount * 100 / tried);
+    result += '<div style="font: bold 20px Arial; color: #E91E63;">You got ' + grades + '% right </div>';
+		result += '<div style="font: 18px Arial; color: rgba(0, 0, 0, 0.7); margin: 10px 0 10px 0;">You did ' + tried + ' of the 10 questions, <br> and got ' + yesCount + ' right</div>';
+  }else {
+    result += 'Please try the quizes above'
+  }
+  document.getElementById('result').innerHTML = result;
+}

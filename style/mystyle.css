@@ -24,8 +24,19 @@ header h1 {
     color: rgba(255, 255, 255, 0.7);
 }
 
+
 h2 {
-  font-size: 25px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.45em;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+article p {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .sidenav {
@@ -60,12 +71,22 @@ h2 {
   margin: 0;
 }
 
-
-.panel-body > pre {
+.panel {
 	margin-top: 15px;
 }
-/* Set black background color, white text and some padding */
 
+.panel-heading {
+  background-color: #E91E63 !important;
+  color: white !important;
+}
+
+.glyphicon-ok {
+  opacity: 0;
+}
+
+.quizStem {
+  float: right;
+}
 
 footer {
   border-top: solid 1px #C2185B;
@@ -87,6 +108,15 @@ footer {
 #mult-practice {
   margin-top: 30px;
   margin-bottom: 40px;
+}
+
+#quiz {
+  position:relative;
+  width:360px;
+  height:430px;
+  margin:auto;
+  display:block;
+  float: left;
 }
 
 
